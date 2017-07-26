@@ -49,48 +49,46 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
-<!-- 	<bean id="simpleJobDetail"
-		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	<bean id="simpleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="myBean" />
 		<property name="targetMethod" value="printMessage" />
 	</bean>
 
-	<bean id="firstComplexJobDetail"
-		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass"
-			value="com.imooc.springquartz.quartz.FirstScheduledJob" />
+	<bean id="cronJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.zy.springquartz.quartz.FirstScheduledJob" />
 		<property name="jobDataMap">
 			<map>
 				<entry key="anotherBean" value-ref="anotherBean" />
 			</map>
 		</property>
 		<property name="Durability" value="true"/>				
-	</bean> -->
+	</bean>
+	
 	<!-- 距离当前时间1秒之后执行，之后每隔两秒钟执行一次 -->
-<!-- 	<bean id="mySimpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
 	    <property name="jobDetail"  ref="simpleJobDetail"/>
 	    <property name="startDelay"  value="1000"/>
 	    <property name="repeatInterval"  value="2000"/>
-	</bean> -->
+	</bean>
 	
 	<!-- 每隔5秒钟执行一次 -->
-<!-- 	<bean id="myCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-	    <property name="jobDetail"  ref="firstComplexJobDetail"/>
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+	    <property name="jobDetail"  ref="cronJobDetail"/>
 	    <property name="cronExpression"  value="0/5 * * ? * *"/>
-	</bean> -->
+	</bean>
 	
-<!-- 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 	    <property name="jobDetails">
 	        <list>
 	            <ref bean="simpleJobDetail"/>
-	            <ref bean="firstComplexJobDetail"/>
+	            <ref bean="cronJobDetail"/>
 	        </list>
 	    </property>
 	    <property name="triggers">
 	        <list>
-	            <ref bean="mySimpleTrigger"/>
-	            <ref bean="myCronTrigger"/>
+	            <ref bean="simpleTrigger"/>
+	            <ref bean="cronTrigger"/>
 	        </list>
 	    </property>
-	</bean> -->
+	</bean>
 </beans>  

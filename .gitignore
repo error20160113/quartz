@@ -24,5 +24,7 @@ hs_err_pid*
 
 # IDE配置文件  
 .project
-
-
+.classpath
+.settings/
+.tern-project
+/target/
